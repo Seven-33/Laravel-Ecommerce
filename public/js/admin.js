@@ -7,7 +7,7 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-window.$ = window.jQuery = __webpack_require__("./resources/js/admin sync recursive")(jquery);
+window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 __webpack_require__(/*! bootstrap/dist/js/bootstrap.bundle */ "./node_modules/bootstrap/dist/js/bootstrap.bundle.js");
 
@@ -55778,24 +55778,6 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 })));
 
-
-/***/ }),
-
-/***/ "./resources/js/admin sync recursive":
-/*!**********************************!*\
-  !*** ./resources/js/admin/ sync ***!
-  \**********************************/
-/***/ ((module) => {
-
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
-}
-webpackEmptyContext.keys = () => ([]);
-webpackEmptyContext.resolve = webpackEmptyContext;
-webpackEmptyContext.id = "./resources/js/admin sync recursive";
-module.exports = webpackEmptyContext;
 
 /***/ })
 
