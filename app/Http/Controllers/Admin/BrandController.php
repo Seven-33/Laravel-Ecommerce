@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -14,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::latest()->paginate(20);
+        return view("admin.brands.index", compact("brands"));
     }
 
     /**
@@ -35,10 +37,18 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'name' => 'required'
         ]);
+
+        Brand::create([
+            'name' => $request->name,
+            'is_active' => $request->is_active,
+        ]);
+
+        alert()->success('برند مورد نظر ایجاد شد', 'با تشکر');
+
+        return redirect()->route("admin.brands.index");
     }
 
     /**
