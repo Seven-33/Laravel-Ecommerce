@@ -9,7 +9,7 @@
   <meta name="description" content="my admin-panel">
   <meta name="author" content="mohammad taheri">
 
-  <title>irdevprogsShop.ir @yield('title') </title>
+  <title>irdevprogsShop.ir |  @yield('title') </title>
 
   <!-- Custom styles for this template-->
   <link href="{{asset('/css/admin.css')}}" rel="stylesheet">
