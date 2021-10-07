@@ -28,7 +28,7 @@
                         <label for="is_active">وضعیت</label>
                         <select class="form-control" id="is_active" name="is_active">
                             <option value="1" selected>فعال</option>
-                            <option value="o">غیرفعال</option>
+                            <option value="0">غیرفعال</option>
                         </select>
                     </div>
                 </div>
