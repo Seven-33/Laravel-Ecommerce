@@ -15,7 +15,8 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        dd("mamad");
+        $attributes = Attribute::latest()->paginate(20);
+        return view("admin.attributes.index", compact("attributes"));
     }
 
     /**
@@ -55,9 +56,9 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Attribute $attribute)
     {
-        //
+        return view('admin.attributes.show', compact("attribute"));
     }
 
     /**
