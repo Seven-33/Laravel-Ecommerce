@@ -26,10 +26,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $parentCategory = Category::where("parent_id",0)->get();
+        $parentCategories = Category::where("parent_id",0)->get();
         $attributes = Attribute::all();
 
-        return view("admin.categories.create", compact("parentCategory","attributes"));
+        return view("admin.categories.create", compact("parentCategories","attributes"));
     }
 
     /**
@@ -40,7 +40,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
