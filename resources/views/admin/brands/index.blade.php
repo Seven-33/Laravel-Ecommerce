@@ -38,7 +38,9 @@
                                         {{ $brand->is_active }}
                                     </span>
                                 </th>
-                                <th>#</th>
+                                <th>
+                                    <a class="btn btn-sm btn-success" href="{{route("admin.brands.show",$brand->id)}}">نمایش</a>
+                                </th>
                             </tr>
 
                         @endforeach
