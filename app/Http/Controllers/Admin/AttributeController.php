@@ -67,9 +67,9 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Attribute $attribute)
     {
-        //
+        return view('admin.attributes.edit', compact("attribute"));
     }
 
     /**
@@ -79,9 +79,19 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Attribute $attribute)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $attribute->update([
+            'name' => $request->name,
+        ]);
+
+        alert()->success('ویژگی مورد نظر ویرایش شد', 'با تشکر');
+
+        return redirect()->route("admin.attributes.index");
     }
 
     /**
