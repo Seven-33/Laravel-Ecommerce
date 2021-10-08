@@ -40,6 +40,7 @@
                                 </th>
                                 <th>
                                     <a class="btn btn-sm btn-success" href="{{route("admin.brands.show",$brand->id)}}">نمایش</a>
+                                    <a class="btn btn-sm btn-info mr-3" href="{{route("admin.brands.edit",$brand->id)}}">ویرایش</a>
                                 </th>
                             </tr>
 
