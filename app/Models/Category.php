@@ -16,7 +16,7 @@ class Category extends Model
     {
        return $is_active ? "فعال" : "غیرفعال";
     }
-    
+
     public function parent()
     {
        return $this->belongsTo(Category::class, "parent_id");
@@ -25,6 +25,11 @@ class Category extends Model
     public function children()
     {
        return $this->hasMany(Category::class, "parent_id");
+    }
+
+    public function attributes()
+    {
+       return $this->belongsToMany(Attribute::class, 'attribute_category');
     }
 
 }
