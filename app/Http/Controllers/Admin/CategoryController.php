@@ -118,9 +118,50 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:categories,slug,'.$category->id,
+            'parent_id' => 'required',
+            'attributes_ids' => 'required',
+            'attributes_is_filter_ids' => 'required',
+            'variation_id' => 'required',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            $category->update([
+                'name' => $request->name,
+                'slug' => $request->slug,
+                'parent_id' => $request->parent_id,
+                'icon' => $request->icon,
+                'description' => $request->description,
+            ]);
+
+            $category->attributes()->detach();
+
+            foreach ($request->attributes_ids as $attributeId) {
+                $attribute = Attribute::findOrFail($attributeId);
+                $attribute->categories()->attach($category->id, [
+                    'is_filter' => in_array($attributeId, $request->attributes_is_filter_ids) ? 1 : 0,
+                    'is_variation' => $request->variation_id == $attributeId ? 1 : 0,
+
+                ]);
+            }
+
+            DB::commit();
+        } catch (Exception $ex) {
+            DB::rollBack();
+
+            alert()->success('مشکل در ویرایش دسته بندی', 'هشدار ')->persistent('حله');
+            return redirect()->back();
+        }
+
+        alert()->success('دسته بندی مورد نظر ویرایش شد', 'با تشکر');
+
+        return redirect()->route("admin.categories.index");
     }
 
     /**
