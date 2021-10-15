@@ -30,7 +30,7 @@
                     <label>والد</label>
                     <div class="form-control div-disabled">
                         @if ($category->parent_id == 0)
-                            {{ $category->name }}
+                             <span class="text-danger">بدون والد </span>
                         @else
                             {{ $category->parent->name }}
                         @endif

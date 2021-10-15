@@ -51,7 +51,7 @@
         });
 
         $('#variationSelect').selectpicker({
-            'title': 'انتخاب ویژگی'
+            'title': 'انتخاب متغیر'
         });
 
 

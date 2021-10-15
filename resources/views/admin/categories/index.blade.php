@@ -38,7 +38,7 @@
                                 <th>{{ $category->slug }}</th>
                                 <th>
                                     @if ($category->parent_id == 0)
-                                        {{ $category->name }}
+                                         <span class="text-danger">بدون والد </span>
                                     @else
                                         {{ $category->parent->name }}
                                     @endif
