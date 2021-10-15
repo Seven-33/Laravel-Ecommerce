@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -35,7 +36,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        Tag::create([
+            'name' => $request->name,
+        ]);
+
+        alert()->success('تگ مورد نظر ایجاد شد', 'با تشکر');
+
+        return redirect()->route("admin.tags.index");
     }
 
     /**
