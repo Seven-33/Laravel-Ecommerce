@@ -21,6 +21,13 @@
             var fileName = $(this).val();
             $(this).next('.custom-file-label').html(fileName);
         });
+        $('#categorySelect').selectpicker({
+            'title': 'انتخاب دسته بندی'
+        });
+        $('#categorySelect').on('changed.bs.select',function() {
+            let categoryId = $(this).val();
+            console.log(categoryId);
+        });
     </script>
 @endsection
 
@@ -105,6 +112,20 @@
                         <hr>
                         <p>دسته بندی و ویژگی ها </p>
                     </div>
+
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                            <div class="form-group col-md-3">
+                                <label for="category_id">دسته بندی</label>
+                                <select id="categorySelect" name="category_id" class="form-control" data-live-search="true">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }} - {{ $category->parent->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 

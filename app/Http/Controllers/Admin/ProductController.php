@@ -30,7 +30,6 @@ class ProductController extends Controller
         $brands = Brand::all();
         $tags = Tag::all();
         $categories = Category::where('parent_id', '!=', 0)->get();
-
         return view("admin.products.create", compact('brands','tags','categories'));
     }
 
